@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Elgentos_Tierpercentages>
+            <version>0.1.2</version>
+        </Elgentos_Tierpercentages>
+    </modules>
+
+    <adminhtml>
+        <layout>
+            <updates>
+                <tierpercentages>
+                    <file>tierpercentages.xml</file>
+                </tierpercentages>
+            </updates>
+        </layout>
+    </adminhtml>
+
+    <frontend>
+        <events>
+            <cms_page_render>
+                <observers>
+                    <tierpercentages>
+                        <type>singleton</type>
+                        <class>Elgentos_Tierpercentages_Model_Header</class>
+                        <method>add</method>
+                    </tierpercentages>
+                </observers>
+            </cms_page_render>
+        </events>
+    </frontend>
+
+    <global>
+        <blocks>
+            <tierpercentages>
+                <class>Elgentos_Tierpercentages_Block</class>
+            </tierpercentages>
+            <adminhtml>
+                <rewrite>
+                    <catalog_product_edit_tab_price_tier>Elgentos_Tierpercentages_Block_Adminhtml_Catalog_Product_Edit_Tab_Price_Tier</catalog_product_edit_tab_price_tier>
+                </rewrite>
+            </adminhtml>
+        </blocks>
+        <models>
+            <tierpercentages>
+                <class>Elgentos_Tierpercentages_Model</class>
+            </tierpercentages>
+            <catalog>
+                <rewrite>
+                    <product_attribute_backend_tierprice>Elgentos_Tierpercentages_Model_Product_Attribute_Backend_Tierprice</product_attribute_backend_tierprice>
+                </rewrite>
+            </catalog>
+            <catalog_resource_eav_mysql4>
+                <rewrite>
+                    <product_attribute_backend_tierprice>Elgentos_Tierpercentages_Model_Resource_Eav_Mysql4_Product_Attribute_Backend_Tierprice</product_attribute_backend_tierprice>
+                </rewrite>
+            </catalog_resource_eav_mysql4>
+        </models>
+        <resources>
+            <tierpercentages_setup>
+                <setup>
+                    <module>Elgentos_Tierpercentages</module>
+                    <class>Elgentos_Tierpercentages_Model_Mysql4_Setup</class>
+                </setup>
+            </tierpercentages_setup>
+        </resources>
+
+        <helpers>
+            <tierpercentages>
+                <class>Elgentos_Tierpercentages_Helper</class>
+            </tierpercentages>
+        </helpers>
+    </global>
+</config>
